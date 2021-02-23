@@ -15,7 +15,15 @@ export const editar = createAction(
   props<{id: number, texto: string}>()
 );
 
-// export const borrar = createAction(
-//   '[TODO] Borrar Todo',
-//   props<{id: number}>()
-// );
+export const borrar = createAction(
+  '[TODO] Borrar Todo',
+  props<{id: number}>()
+);
+
+export const toggleAll = createAction(
+  '[TODO] Toggle All Todo',
+  props<{completado: boolean}>()
+);
+
+export const borrarAllCompleted = createAction(
+  '[TODO] Borrar All Todo');

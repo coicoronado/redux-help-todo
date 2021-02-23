@@ -46,8 +46,8 @@ export class TodoItemComponent implements OnInit {
     this.store.dispatch(action.editar({id: this.todo.id, texto: this.txtInput.value}));
   }
 
-  // borrar(): void {
-  //   this.store.dispatch(borrar({id: this.todo.id}));
-  // }
+  borrar(): void {
+    this.store.dispatch(action.borrar({id: this.todo.id}));
+  }
 
 }
