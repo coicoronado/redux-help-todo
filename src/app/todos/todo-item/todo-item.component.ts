@@ -3,7 +3,7 @@ import { Todo } from '../models/todo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
-import { editar, toggle } from '../todo.actions';
+import * as action from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -24,14 +24,14 @@ export class TodoItemComponent implements OnInit {
     this.txtInput = new FormControl(this.todo.texto, Validators.required);
 
     this.chkCompletado.valueChanges.subscribe(valor => {
-      console.log({...this.todo});
-      this.store.dispatch(toggle({id: this.todo.id}));
+      console.log(this.todo);
+      this.store.dispatch(action.toggle({id: this.todo.id}));
     });
   }
 
   editar(): void {
     this.editando = true;
-    this.txtInput.setValue(this.todo.texto);
+    // this.txtInput.setValue(this.todo.texto);
     setTimeout(() => {
       this.txtInputFisico.nativeElement.select();
     }, 1);
@@ -43,7 +43,7 @@ export class TodoItemComponent implements OnInit {
         this.txtInput.value === this.todo.texto) {
       return;
     }
-    this.store.dispatch(editar({id: this.todo.id, texto: this.txtInput.value}));
+    this.store.dispatch(action.editar({id: this.todo.id, texto: this.txtInput.value}));
   }
 
   // borrar(): void {

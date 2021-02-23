@@ -12,8 +12,8 @@ export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
   constructor(private store: Store<AppState>) {
     this.store.select('todos').subscribe( todos => {
+      console.log(this.todos, todos);
       this.todos = todos;
-      console.log(todos, 'asdfasdfasdfasdfasdf');
     } );
   }
 

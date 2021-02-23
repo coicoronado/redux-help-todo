@@ -14,15 +14,12 @@ const _todoReducer = createReducer(
   on(crear, (state, { texto }) => [...state, new Todo(texto)]),
   // on(borrar, (state, { id }) => state.filter(todo => id !== todo.id)),
   on(toggle, (state, { id }) => {
-    return state.map(todo => {
-      if (todo.id === id) {
-        console.log({...todo, completado: !todo.completado});
-        const resp = {...todo, completado: !todo.completado};
-        return {...todo, completado: !todo.completado};
-        // {
-        //   ...todo,
-        //   completado: !todo.completado
-        // };
+    return state.map( todo => {
+      if ( todo.id === id  ) {
+        return {
+          ...todo,
+          completado: !todo.completado
+        };
       } else {
         return todo;
       }
@@ -33,8 +30,7 @@ const _todoReducer = createReducer(
       if (todo.id === id) {
         return {
           ...todo,
-          texto,
-          completado: !todo.completado
+          texto
         };
       } else {
         return todo;
@@ -44,5 +40,8 @@ const _todoReducer = createReducer(
 );
 
 export function todoReducer(state, action) {
+  // const rr = _todoReducer(state, action);
+  // console.log(rr);
+  // return rr;
   return _todoReducer(state, action);
 }

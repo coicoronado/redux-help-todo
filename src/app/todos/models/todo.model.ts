@@ -5,7 +5,7 @@ export class Todo {
 
   constructor(texto: string) {
     this.id = Math.random() * 10000000000000000;
-    this.completado = false;
     this.texto = texto || '';
+    this.completado = false;
   }
 }
